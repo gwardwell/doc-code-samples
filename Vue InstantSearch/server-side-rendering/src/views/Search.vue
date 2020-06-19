@@ -1,38 +1,21 @@
 <template>
-  <ais-instant-search-ssr>
-    <ais-search-box />
-    <ais-stats />
-    <ais-refinement-list attribute="brand" />
-    <ais-hits>
-      <template slot="item" slot-scope="{ item }">
-        <p><ais-highlight attribute="name" :hit="item" /></p>
-        <p><ais-highlight attribute="brand" :hit="item" /></p>
-      </template>
-    </ais-hits>
-    <ais-pagination />
-  </ais-instant-search-ssr>
+    <SearchResults :appliedRefinements="appliedRefinements" />
 </template>
 
 <script>
-import {
-  AisInstantSearchSsr,
-  AisRefinementList,
-  AisHits,
-  AisHighlight,
-  AisSearchBox,
-  AisStats,
-  AisPagination,
-} from 'vue-instantsearch';
+import SearchResults from '../components/SearchResults';
 
 export default {
-  components: {
-    AisInstantSearchSsr,
-    AisRefinementList,
-    AisHits,
-    AisHighlight,
-    AisSearchBox,
-    AisStats,
-    AisPagination,
-  },
+    components: {
+        SearchResults,
+    },
+    data() {
+        return {
+            appliedRefinements: {
+                hitsPerPage: 4,
+                disjunctiveFacetsRefinements: { brand: ['Samsung'] },
+            },
+        };
+    },
 };
 </script>
