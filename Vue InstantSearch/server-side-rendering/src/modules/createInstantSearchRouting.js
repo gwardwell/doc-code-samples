@@ -1,30 +1,5 @@
 import qs from 'qs';
 
-// const routeStateQueryString = routeState => {
-//     const queryParameters = {};
-//     if (routeState.page && routeState.page !== 1) {
-//         queryParameters.page = routeState.page;
-//     }
-//     if (routeState.query) {
-//         queryParameters.query = encodeURIComponent(routeState.query);
-//     }
-//     if (routeState.sortBy) {
-//         queryParameters.sortBy = encodeURIComponent(routeState.sortBy);
-//     }
-//     const refinements = filterRefinements(routeState);
-//     if (Object.keys(refinements).length) {
-//         const key = Object.keys(refinements)[0];
-//         queryParameters[key] = refinements[key].map(encodeURIComponent);
-//     }
-//     // console.log(queryParameters)
-//     const url = qs.stringify(queryParameters, {
-//         addQueryPrefix: true,
-//         arrayFormat: 'repeat',
-//     });
-//     console.log(`server: "${url}"`);
-//     return url;
-// };
-
 const filterRefinements = ({ page, query, sortBy, ...refinements } = {}) =>
     refinements;
 
@@ -97,7 +72,6 @@ export default context => ({
     },
     stateMapping: {
         routeToState(routeState) {
-            console.log(routeState);
             const refinementList = {};
             if (routeState) {
                 const refinements = filterRefinements(routeState);
